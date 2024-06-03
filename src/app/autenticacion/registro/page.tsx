@@ -1,6 +1,6 @@
 "use client";
 import "./form.css";
-import icoGoogle from "@/src/app/image/iconGoogle.png";
+import icoGoogle from "@/app/image/iconGoogle.png";
 import Image from "next/image";
 import Link from "next/link";
 import "@/components/InputForm.css";
