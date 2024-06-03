@@ -1,0 +1,16 @@
+.boton-auth {
+    background: #115AB0;
+    width: 100%;
+    padding: 7px;
+    border-radius: 8px;
+    transition-property: background;
+    transition-duration: .3s;
+}
+
+.boton-auth > p {
+    text-align: center;
+}
+
+.boton-auth:hover {
+    background: #1168cc;
+}

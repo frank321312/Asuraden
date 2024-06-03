@@ -1,0 +1,21 @@
+.input-form {
+    border: .5px solid #acaaaa;
+    background: #F1F1F1;
+    outline: none;
+    margin-bottom: 25px;
+    margin-top: 4px;
+    width: 100%;
+    padding: 4px;
+    padding-left: 6px;
+    border-radius: 5px;
+    transition-property: background;
+    transition-duration: .3s;
+}
+
+.input-form:hover {
+    background: #e2e1e1;
+}
+
+.input-form:focus {
+    background: #e2e1e1;
+}
