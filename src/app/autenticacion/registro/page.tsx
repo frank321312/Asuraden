@@ -1,6 +1,6 @@
 "use client";
 import "./form.css";
-import icoGoogle from "@/app/image/iconGoogle.png";
+import icoGoogle from "@/src/app/image/iconGoogle.png";
 import Image from "next/image";
 import Link from "next/link";
 import "@/components/InputForm.css";
@@ -9,7 +9,7 @@ import { FormEvent, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-interface MessageErrorAxios {
+export interface MessageErrorAxios {
   response: {
     data: {
       message: string;
@@ -17,6 +17,10 @@ interface MessageErrorAxios {
       email: boolean;
       password: boolean;
       err: boolean;
+      mensaje: {
+        estado: number;
+        message: string;
+      }
     };
   };
 }
@@ -33,7 +37,7 @@ export default function Registro() {
     passwordUser: false,
     emailError: false,
   });
-  console.log(usuario);
+
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
@@ -61,13 +65,13 @@ export default function Registro() {
         passwordUser: enviarDatos.data.password,
         emailError: enviarDatos.data.err,
       });
+      localStorage.setItem("correo", email);
       router.push("/autenticacion/validacion");
       await enviarCodigo();
     } catch (error) {
       const mensajeErr = error as MessageErrorAxios;
       const objectError = mensajeErr.response.data;
       setError(objectError.message);
-      console.log(error);
       setUsuario({
         nombreUser: objectError.nombre,
         emailUser: objectError.email,

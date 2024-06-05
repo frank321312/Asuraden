@@ -89,13 +89,13 @@ app.post("/validar-registro", validarCodigo, async (req: Request, res: Response)
     const email = req.body.Email;
 
     try {
-        await buscarEmailUsuario(email);
         const usuario = await obtenerDatosPorEmail(email) as IUsuario;
+        console.log(usuario);
         if (usuario.Codigo === Number(codigo)) {
             console.log(usuario);
             await insertarUsuario(usuario.Nombre, usuario.Email, usuario.Contrasena, usuario.Codigo);
             await eliminarUsuarioPorEmail(usuario.Email);
-            return res.status(200).json({ message: "Registro exitoso" });
+            return res.status(200).json({ message: "Registro exitoso", id: usuario.IdNoValidado });
         } 
         return res.status(400).json({ message: "Codigo invalido" });
     } catch (error) {
@@ -111,11 +111,11 @@ app.post("/iniciar-sesion", subpilaIniciarSesion, async (req: Request, res: Resp
     
     try {
         var respuesta = await obtnerUsuario(email, password);
-        return res.status(200).json({ message: respuesta });
+        return res.status(200).json({ mensaje: respuesta });
     } catch (error) {
         console.log("Error, promesa rechazada, no se pudieron encontrar los datos");
         console.log(error);
-        return res.status(400).json({ message: error });
+        return res.status(400).json({ mensaje: error });
     }
 });
 

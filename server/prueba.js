@@ -41,3 +41,10 @@
 
 // llamarConsulta();
 
+const sappe = "123     ";
+console.log();
+if (sappe.indexOf(" ")) {
+    console.log("Error");
+} else {
+    console.log("Sappe");
+}

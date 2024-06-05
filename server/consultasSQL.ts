@@ -94,12 +94,13 @@ export const obtnerUsuario = async (Email: string, Password: string) => {
                     reject(err);
                 } else if (results[0].length > 0) {
                     if (Password == results[0][0].Contrasena) {
-                        resolve("Inicio de sesion exitosa");
+                        console.log(Password);
+                        resolve({ estado: 0, message: "Inicio de sesion exitosa" });
                     } else {
-                        reject("Error, contraseña invalida");
+                        reject({ estado: 2, message: "Error, contraseña invalida" });
                     }
                 } else {
-                    reject("Error, no existe el usuario");
+                    reject({ estado: 1, message: "Error, no existe el usuario" });
                 }
             })
         }
